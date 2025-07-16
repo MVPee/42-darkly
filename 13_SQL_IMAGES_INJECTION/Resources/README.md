@@ -23,7 +23,8 @@ Example of unsafe query constructed with concatenation of user input :
 `1 UNION SELECT NULL, table_name FROM information_schema.tables--`
 
 => columns names
-`1 UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name=X`
+
+`1 UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name=X--`
 
 Where X is converted in hex to avoid any filtering and any issue with the character "'".
 
