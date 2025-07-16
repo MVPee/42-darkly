@@ -2,6 +2,7 @@
 
 The application allows injecting base64-encoded HTML/JavaScript through the src parameter:
 
+`http://192.168.38.130/index.php?page=media&src=data:text/html,<script>alert('1');</script>`
 `http://192.168.38.130/?page=media&src=data:text/html;base64,PHNjcmlwdD5hbGVydCgneHNzJyk8L3NjcmlwdD4=`
 
 https://base64.guru/converter
